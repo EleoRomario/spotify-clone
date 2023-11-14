@@ -1,0 +1,51 @@
+---
+import AsideMenu from "../components/AsideMenu.astro";
+
+const {title} = Astro.props
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>{title}</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="app" class="relative h-screen min-h-full p-2 gap-2 ">
+      <aside class="[grid-area:aside] flex flex-col relative">
+        <AsideMenu/>
+      </aside>
+      <main class="[grid-area:main] rounded-lg overflow-y-auto bg-zinc-900">
+        <slot/>
+      </main>
+      <footer class="[grid-area:player]">
+        player
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: "CircularStd", system-ui, sans-serif;
+    background: #010101;
+    color: white;
+  }
+  #app {
+    display: grid;
+    grid-template-areas: "aside main main"
+    "player player player";
+    grid-template-columns: 314px 1fr;
+    grid-template-rows: 1fr auto;    
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background: #2d2d2d8a;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar{
+    width: 10px;
+    background: transparent;
+  }
+
+</style>
