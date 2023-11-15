@@ -1,16 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { playlists } from "@/lib/data";
-import PlayListItemCard from "@/components/PlayListItemCard.astro";
+import PlayListItemCard from "@/components/aside/PlayListItemCard.astro";
+import MainHeader from "@/components/main/MainHeader.astro";
+import { Greeting } from "@/components/main/Greeting";
+import BackgroundColor from "@/components//main/BackgroundColor";
 ---
 <Layout title="Spotify Clone">
   <div id="playlist-container"
-    class="relative transition-all duration-1000 bg-green-600">
-    <div class="relative z-10 px-6">
-      <h2 class="text-4cl">Buenos dias</h2>
-      {playlists.map((playlist) => <PlayListItemCard playlist={playlist} />)}
+    class="relative overflow-y-auto h-full">
+    <div class="relative px-7 z-10">
+      <MainHeader />
+      <Greeting client:load />
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t"></div>
+    <BackgroundColor  client:load/>
   </div>
 
 </Layout>

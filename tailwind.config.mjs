@@ -11,9 +11,9 @@ export default {
 				},
 				text: "#a7a7a7",
 			},
-		},
-		boxShadow: {
-			side: "0 6px 10px rgba(0,0,0,.6)",
+			boxShadow: {
+				side: "0 6px 10px 0 rgba(0,0,0,.6)",
+			},
 		},
 	},
 	plugins: [],
