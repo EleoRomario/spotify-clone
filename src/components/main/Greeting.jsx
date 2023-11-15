@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { playlists } from "@/lib/data";
-import Play from "@/icons/Play.astro";
 import { playlistStore } from "@/lib/store/store";
 
-const ButtonPlay = () => (
-	<button className="w-8 h-8 bg-green-600 rounded-full text-black shadow-side shadow-black/50 hover:scale-105">
+export const ButtonPlay = ({ className = "w-8 h-8" }) => (
+	<button
+		className={`${className} bg-green-600 rounded-full text-black shadow-side shadow-black/50 hover:scale-105 flex justify-center items-center`}
+	>
 		<svg viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor">
 			<path fill="currentColor" d="M8 5.14v14l11-7-11-7z"></path>
 		</svg>
