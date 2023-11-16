@@ -2,6 +2,7 @@
 
 import { type Playlist } from "@/lib/data";
 import { ButtonPlay } from "./Greeting";
+import { playlistStore } from "@/lib/store/store";
 
 interface Props {
   playlist: Playlist;
@@ -9,17 +10,24 @@ interface Props {
 
 const { playlist } = Astro.props;
 
----
+const {cover, title, artists, id, color} = playlist;
 
-<div class="w-44 p-4 rounded-lg bg-black-400/50 hover:bg-black-400 flex flex-col gap-2 transition-colors duration-300 group">
+---
+<a href={`/playlist/${id}`} >
+  <div class="w-44 p-4 rounded-lg bg-black-400/50 hover:bg-black-400 flex flex-col gap-2 transition-colors duration-300 group">
   <div class="relative h-32 w-full">
-    <img src={playlist?.cover} alt={playlist?.title} class="overflow-hidden h-full w-full rounded-md object-cover shadow-lg shadow-black/60 z-10" />
+    <img src={cover} alt={title} class="overflow-hidden h-full w-full rounded-md object-cover shadow-lg shadow-black/60 z-10" transition:name=`playlist ${id} image`/>
     <div class="absolute right-3 bottom-3 flex group-hover:opacity-100 opacity-0 items-center translate-y-1 group-hover:translate-y-0 transition-all duration-300 z-20">
       <ButtonPlay client:load className="w-10 h-10"/>
     </div>
   </div>
   <div class="flex flex-col items-start">
-    <h4 class="text-sm font-bold">{playlist?.title}</h4>
-    <p class="text-xs text-text truncate">{playlist?.artists.join(",")}</p>
+    <h4 class="text-sm font-bold"
+      transition:name=`playlist ${id} title`
+    >{title}</h4>
+    <p class="text-xs text-text truncate"
+      transition:name=`playlist ${id} artists`
+    >{artists.join(",")}</p>
   </div>
-</d>
+</div>
+</>

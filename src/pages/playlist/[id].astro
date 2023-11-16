@@ -1,0 +1,34 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import {ContainerCard} from "@/components/main/ContainerCard";
+import { allPlaylists, songs } from "@/lib/data";
+const {id} = Astro.params;
+
+const playlist = allPlaylists.find((playlist) => playlist.id === id);
+const songslist = songs.filter((song) => song.albumId.toString() === id);
+---
+<Layout title="Spotify Clone">
+  <ContainerCard client:visible playlist={playlist}>
+    <div class="flex gap-6 items-end">
+    <picture>
+      <img
+        src={playlist?.cover}
+        alt={playlist?.title}
+        width="200"
+        height="200"
+        transition:name=`playlist ${id} image`
+      >
+    </picture>
+    <div>
+      <span>Playlist</span>
+      <h1 class="font-black text-7xl truncate mb-6" transition:name=`playlist ${id} title`>
+        {playlist?.title}
+      </h1>
+      <span class="text-text" transition:name=`playlist ${id} artists`>{playlist?.artists.join(", ")}</span>
+      <div class="text-text text-sm">
+        <span>{songslist.length} canciones, cerca de 5 h 40 min</span>
+      </div>
+    </div>
+    </div>
+  </ContainerCard>
+</Layout> 

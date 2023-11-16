@@ -1,23 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { playlists } from "@/lib/data";
-import PlayListItemCard from "@/components/aside/PlayListItemCard.astro";
-import MainHeader from "@/components/main/MainHeader.astro";
+import Layout from "@/layouts/Layout.astro";
 import { Greeting } from "@/components/main/Greeting";
-import BackgroundColor from "@/components//main/BackgroundColor";
 import MainMadeForYou from "@/components/main/MainMadeForYou.astro";
 ---
 <Layout title="Spotify Clone">
-  <div id="playlist-container"
-    class="relative overflow-y-auto h-full">
-    <div class="relative px-7 z-10">
-      <MainHeader />
-      <div class="flex flex-col gap-6">
-        <Greeting client:load />
-        <MainMadeForYou />
-      </div>
-    </div>
-    <BackgroundColor  client:load/>
+  <div class="flex flex-col gap-6">
+    <Greeting client:load />
+    <MainMadeForYou />
   </div>
-
 </Layout>
