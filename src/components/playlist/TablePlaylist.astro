@@ -1,0 +1,50 @@
+---
+import { ButtonPlay } from '@/components/main/Greeting.jsx'
+import Clock from "@/icons/Clock.astro"
+
+const {songslist} = Astro.props
+---
+<div class="p-7 bg-black/20">
+  <header class="flex w-full mb-7">
+    <ButtonPlay client:load className="w-14 h-14"/>
+  </header>
+  <table class="w-full">
+    <thead>
+      <tr class="text-text text-sm border-b h-12 border-black-400">
+        <th class="w-5 text-start font-normal">#</th>
+        <th class="text-start font-normal">Título</th>
+        <th class="text-start font-normal">Álbum</th>
+        <th class="w-16 text-center"><Clock /></th>
+      </tr>
+    </thead>
+    <tbody>
+      {songslist.map(({id, image,title,artists,album,duration}) => (
+        <tr class="hover:bg-black-500/60">
+          <td class="rounded-tl-md rounded-bl-md px-3">{id}</td>
+          <td>
+            <div class="playlist-item flex relative p-2 overflow-hidden items-center gap-5 ">
+              <picture class="h-12 w-12 flex-none">
+                <img 
+                  src={image}
+                  alt={`Cover of ${title} by ${artists.join(", ")}`}
+                  class="object-cover w-full h-full rounded-md"
+                />
+              </picture>
+              <div class="flex flex-auto flex-col truncate">
+                <h4 class="font-medium text-sm">
+                  {title}
+                </h4>
+                <span class="text-xs text-zinc-400"
+                >
+                  {artists.join(", ")}
+                </span>
+              </div>
+            </di>
+          </td>
+          <td class="font-light text-text text-sm">{album}</td>
+          <td class="font-light text-text text-sm rounded-tr-md rounded-br-md">{duration}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -2,7 +2,6 @@
 
 import { type Playlist } from "@/lib/data";
 import { ButtonPlay } from "./Greeting";
-import { playlistStore } from "@/lib/store/store";
 
 interface Props {
   playlist: Playlist;
@@ -10,7 +9,7 @@ interface Props {
 
 const { playlist } = Astro.props;
 
-const {cover, title, artists, id, color} = playlist;
+const {cover, title, artists, id} = playlist;
 
 ---
 <a href={`/playlist/${id}`} >
