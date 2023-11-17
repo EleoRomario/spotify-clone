@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { playlistStore } from "@/lib/store/store";
+import BackgroundColor from "./BackgroundColor";
 
 export const ContainerCard = ({ playlist, children }) => {
 	const { setCurrentColor } = playlistStore();
@@ -7,5 +8,10 @@ export const ContainerCard = ({ playlist, children }) => {
 		setCurrentColor(playlist?.color);
 	}, []);
 
-	return <article>{children}</article>;
+	return (
+		<article>
+			<BackgroundColor />
+			{children}
+		</article>
+	);
 };

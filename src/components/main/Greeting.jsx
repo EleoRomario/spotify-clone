@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { playlists } from "@/lib/data";
 import { playlistStore } from "@/lib/store/store";
+import BackgroundColor from "./BackgroundColor";
 
 export const ButtonPlay = ({ className = "w-8 h-8" }) => (
 	<button
 		className={`${className} bg-green-600 rounded-full text-black shadow-side shadow-black/50 hover:scale-105 flex justify-center items-center`}
 	>
-		<svg viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor">
+		<svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor">
 			<path fill="currentColor" d="M8 5.14v14l11-7-11-7z"></path>
 		</svg>
 	</button>
@@ -25,7 +26,6 @@ const ItemCard = ({ item }) => {
 		<div
 			className="relative rounded-md h-12 group bg-black-400/60 hover:bg-black-400 transition-all duration-300 overflow-hidden"
 			onMouseEnter={handleHover}
-			onMouseLeave={() => setCurrentColor(null)}
 		>
 			<button className="w-full h-full flex items-center gap-2 ">
 				<img src={cover} alt={title} className="h-full w-12" />
@@ -82,7 +82,7 @@ export const Greeting = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col gap-7">
+		<div className="flex flex-col gap-7 relative z-10">
 			<h2 className="text-3xl font-bold">{greeting}</h2>
 			<div>
 				<div className="grid grid-cols-3 gap-2">

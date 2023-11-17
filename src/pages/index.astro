@@ -2,10 +2,12 @@
 import Layout from "@/layouts/Layout.astro";
 import { Greeting } from "@/components/main/Greeting";
 import MainMadeForYou from "@/components/main/MainMadeForYou.astro";
+import BackgroundColor from "@/components/main/BackgroundColor";
 ---
 <Layout title="Spotify Clone">
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 relative z-10">
     <Greeting client:load />
     <MainMadeForYou />
   </div>
+  <BackgroundColor client:load height="h-[350px]"/>
 </Layout>
