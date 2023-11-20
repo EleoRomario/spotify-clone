@@ -8,7 +8,7 @@ const {id} = Astro.params;
 const playlist = allPlaylists.find((playlist) => playlist.id === id);
 const songslist = songs.filter((song) => song.albumId.toString() === id);
 ---
-<Layout title="Spotify Clone">
+<Layout title="Spotify Clone | Playlist">
   <ContainerCard client:visible playlist={playlist}>
     <div class="relative z-10">
       <div class="flex gap-6 items-end mb-6 px-7">
