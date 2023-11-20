@@ -85,7 +85,7 @@ export const MainHeader = () => {
 			<div className="flex gap-2">
 				<ButtonNotification />
 				<a
-					href="/"
+					href="https://github.com/EleoRomario/spotify-clone"
 					className="flex justify-center items-center h-8 w-8 bg-black rounded-full"
 				>
 					<svg
