@@ -5,6 +5,14 @@ import { allPlaylists, songs } from "@/lib/data";
 import TablePlaylist from "@/components/playlist/TablePlaylist.astro";
 const {id} = Astro.params;
 
+export function getStaticPaths() {
+  return allPlaylists.map((playlist) => ({
+    params: {
+      id: playlist.id,
+    },
+  }));
+}
+
 const playlist = allPlaylists.find((playlist) => playlist.id === id);
 const songslist = songs.filter((song) => song.albumId.toString() === id);
 ---
